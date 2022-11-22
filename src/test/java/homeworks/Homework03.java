@@ -45,36 +45,6 @@ public class Homework03 extends ReqresBaseUrl {
         response.prettyPrint();
 
         //Do Assertion
-        /*
-        {
-            "data": {
-                "id": 2,
-                "email": "janet.weaver@reqres.in",
-                "first_name": "Janet",
-                "last_name": "Weaver",
-                "avatar": "https://reqres.in/img/faces/2-image.jpg"
-            },
-            "support": {
-                "url": "https://reqres.in/#support-heading",
-                "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
-            }
-        }
-         */
-
-           /*
-
-           HTTP Status Code should be 200
-       And
-           Response format should be “application/json”
-       And
-           “email” is “janet.weaver@reqres.in”,
-       And
-           “first_name” is "Janet"
-       And
-           “last_name” is "Weaver"
-       And
-           "text" is "To keep ReqRes free, contributions towards server costs are appreciated!"
-    */
 
         //1. Way
         response.then().assertThat().statusCode(200)
