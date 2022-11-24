@@ -6,6 +6,8 @@ import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static io.restassured.RestAssured.given;
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -40,8 +42,14 @@ public class Homework02 extends ReqresBaseUrl {
         JsonPath jsonPath=response.jsonPath();
 
         jsonPath.prettyPrint();
-
+        //1.way
         response.then().assertThat().body("isEmpty()", Matchers.is(true));
+        //2.
+        assertEquals(0,response.asString().replaceAll("[^A-Za-z0-9]","").length());
+
+        //3.way
+        HashMap<String,String> responseBody=response.as(HashMap.class);
+        assertEquals(0,responseBody.size());
 
 
     }
