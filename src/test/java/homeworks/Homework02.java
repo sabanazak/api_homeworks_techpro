@@ -47,7 +47,7 @@ public class Homework02 extends ReqresBaseUrl {
         //2.
         assertEquals(0,response.asString().replaceAll("[^A-Za-z0-9]","").length());
 
-        //3.way
+        //3.Way
         HashMap<String,String> responseBody=response.as(HashMap.class);
         assertEquals(0,responseBody.size());
 
