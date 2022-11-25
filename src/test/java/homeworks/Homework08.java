@@ -7,9 +7,12 @@ import org.junit.Test;
 import pojos.H08_User;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 import static org.testng.Assert.assertEquals;
 
 public class Homework08 extends PetStoreBaseUrl {
@@ -68,7 +71,16 @@ public class Homework08 extends PetStoreBaseUrl {
         Response responseArray = given().spec(spec).contentType(ContentType.JSON).body(usersArray).when().post("{first}/{second}/{third}");
         responseArray.prettyPrint();
 
-        responseArray.then().assertThat().statusCode(200);
+        responseArray.then().assertThat().
+                statusCode(200).
+                body("code",equalTo(200),
+                        "type",equalTo("unknown"));
+        //or
+
+        Map<String ,Object> actualData =response.as(HashMap.class);
+        assertEquals(200,actualData.get("code"));
+        assertEquals("unknown",actualData.get("type"));
+        assertEquals(200,response.statusCode());
 
     }
 

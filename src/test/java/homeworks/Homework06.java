@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.hasSize;
 import static org.testng.Assert.assertEquals;
 
 public class Homework06 extends ReqresBaseUrl {
@@ -45,7 +46,7 @@ public class Homework06 extends ReqresBaseUrl {
 
         //Do Assertion
         //1)Status code is 200
-        response.then().assertThat().statusCode(200);
+        response.then().assertThat().statusCode(200).body("data",hasSize(6));
 
         //2)Print all pantone_values
         List<String> pantoneValues=jsonPath.getList("data.pantone_value");
